@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Meat
+  - LVL1canvas
   layers:
   - Default
   - TransparentFX

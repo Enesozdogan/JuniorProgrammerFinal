@@ -14,6 +14,7 @@ public class CookingPot : MonoBehaviour,IDropHandler
      public void AddToMeat(GameObject meat){
         meat_PotList.Add(meat);
         meatPotCount.text="Meat: "+meat_PotList.Count;
+        
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -22,11 +23,14 @@ public class CookingPot : MonoBehaviour,IDropHandler
            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition=GetComponent<RectTransform>().anchoredPosition;
            if(eventData.pointerDrag.gameObject.CompareTag("Meat")){
                 AddToMeat(eventData.pointerDrag.gameObject);
-                eventData.pointerDrag.gameObject.SetActive(false);
+                Destroy(eventData.pointerDrag.gameObject);
+                mainManager.SubToMeat(1);  
+                mainManager.CreateMeat();
            }
            else if(eventData.pointerDrag.gameObject.CompareTag("Vegetable")){
 
                Destroy(eventData.pointerDrag.gameObject,0.2f);
+              
            }
        }
     }
