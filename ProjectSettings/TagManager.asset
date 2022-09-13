@@ -7,6 +7,8 @@ TagManager:
   - Food
   - Meat
   - LVL1canvas
+  - Vegetable
+  - Dough
   layers:
   - Default
   - TransparentFX

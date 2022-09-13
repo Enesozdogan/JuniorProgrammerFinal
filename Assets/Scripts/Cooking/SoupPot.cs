@@ -1,36 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-public class MainMenuPot : CookingPot,ISubPots
+
+public class SoupPot :CookingPot ,ISubPots
 {
-    int meatpara,vegepara,doughpara;
+ int meatpara,vegepara,doughpara;
     bool complete=true;
     public GameObject xd;
     private Item outputItem;
+    bool waterAdded=false;
     public List<CraftingRecipe> craftingRecipes;
     public  ItemScriptableObject CreateMeal(){
         foreach(CraftingRecipe craftingRecipe in craftingRecipes){
             complete=true;
-            if(meat_PotList.Count!=craftingRecipe.meatAmount){
-                complete=false;    
-            }
-            if(vege_PotList.Count!=craftingRecipe.vegeAmount){
-                complete=false;
-            }
-            if(dough_PotList.Count!=craftingRecipe.doughAmount){
-                complete=false;
-            }
+            if(meat_PotList.Count!=craftingRecipe.meatAmount)complete=false;        
+            if(vege_PotList.Count!=craftingRecipe.vegeAmount)complete=false;
+            if(dough_PotList.Count!=craftingRecipe.doughAmount)complete=false;
+            if(!waterAdded) complete=false;
             if(complete){
                 Debug.Log("Meal created :"+ craftingRecipe.output.name);
                 meatpara=craftingRecipe.meatAmount; vegepara=craftingRecipe.vegeAmount; doughpara=craftingRecipe.doughAmount;
-                GameObject za=Instantiate(xd,new Vector3(0,1.79999995f,-1242.09998f),Quaternion.identity);
-                //za.transform.localScale=new Vector3(0.00865101721f,0.026690105f,0.352420002f);
-                za.AddComponent<Item>();
-                za.AddComponent<SpriteRenderer>();
-                za.GetComponent<Item>().itemScriptableObject=craftingRecipe.output;
-                za.GetComponent<SpriteRenderer>().sprite=craftingRecipe.output.itemSprite;
+                CreateMealObject(craftingRecipe);
                 return craftingRecipe.output;
                 
             }
@@ -39,18 +29,28 @@ public class MainMenuPot : CookingPot,ISubPots
         return null;
 
     }
-    public void Creation(){
-        
+    public void AddWater(){
+        waterAdded=true;
+    }
+    void CreateMealObject(CraftingRecipe craftingRecipe){
+                GameObject za=Instantiate(xd,new Vector3(0,1.79999995f,-1242.09998f),Quaternion.identity);
+                za.transform.localScale=new Vector3(1,1,0.352420002f);
+                za.AddComponent<Item>();
+                za.AddComponent<SpriteRenderer>();
+                za.GetComponent<Item>().itemScriptableObject=craftingRecipe.output;
+                za.GetComponent<SpriteRenderer>().sprite=craftingRecipe.output.itemSprite;
+    }
+
+    public void Creation()
+    {
         ItemScriptableObject recipeOutput=CreateMeal();
         if(recipeOutput==null)Debug.Log("No recipe avaiable");
         RemoveFromPot(meatpara,vegepara,doughpara);
-      
     }
-    public Item GetOutputItem(){
-        return outputItem;
-    }
-    public void RemoveFromPot(int meatCount,int vegeCount,int doughCount){
-       if(meatCount>0) StartCoroutine(RemoveMeat(meatCount)); 
+
+    public void RemoveFromPot(int meatCount, int vegeCount, int doughCount)
+    {
+        if(meatCount>0) StartCoroutine(RemoveMeat(meatCount)); 
         if(vegeCount>0) StartCoroutine(RemoveVege(vegeCount));
         if(doughCount>0) StartCoroutine(RemoveDough(doughCount));
        
@@ -58,7 +58,6 @@ public class MainMenuPot : CookingPot,ISubPots
         doughPotCount.text="Dough: "+dough_PotList.Count;
         vegePotCount.text="Vegetable: "+vege_PotList.Count;
     }
-
     IEnumerator RemoveVege(int vegeCount){
         int i=0,count=0;
         while(i<vege_PotList.Count && count<vegeCount ){
@@ -90,5 +89,4 @@ public class MainMenuPot : CookingPot,ISubPots
         yield return null;
     }
     
-
 }

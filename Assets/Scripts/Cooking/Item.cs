@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
        
        none,
        mainDish,
-       dessert,
+      
        soup,
        meat,
        dough,

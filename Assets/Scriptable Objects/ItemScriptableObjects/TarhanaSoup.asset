@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344ef2cdb0a9946438da69318041c821, type: 3}
-  m_Name: SekerPareRecipe
+  m_Script: {fileID: 11500000, guid: 503f262e022020d46b1f9efc2535090f, type: 3}
+  m_Name: TarhanaSoup
   m_EditorClassIdentifier: 
-  output: {fileID: 11400000, guid: 7a108551703e253438804bbdd77a378e, type: 2}
-  meatAmount: 2
-  vegeAmount: 2
-  doughAmount: 2
+  itemType: 3
+  itemName: TarhanaCorba
+  itemSprite: {fileID: 21300000, guid: 29a312c6e4705e74681130610cf9b7f8, type: 3}

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 344ef2cdb0a9946438da69318041c821, type: 3}
-  m_Name: SekerPareRecipe
+  m_Name: TarhanaRecipe
   m_EditorClassIdentifier: 
-  output: {fileID: 11400000, guid: 7a108551703e253438804bbdd77a378e, type: 2}
-  meatAmount: 2
+  output: {fileID: 11400000, guid: 8e4a995e3c8579d4da79d1712b74f6af, type: 2}
+  meatAmount: 1
   vegeAmount: 2
   doughAmount: 2
