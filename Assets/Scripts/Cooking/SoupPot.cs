@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoupPot :CookingPot ,ISubPots
 {
- int meatpara,vegepara,doughpara;
+    int meatpara,vegepara,doughpara;
     bool complete=true;
     public GameObject xd;
     private Item outputItem;

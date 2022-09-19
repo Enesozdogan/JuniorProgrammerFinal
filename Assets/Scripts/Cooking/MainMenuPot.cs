@@ -63,7 +63,9 @@ public class MainMenuPot : CookingPot,ISubPots
         int i=0,count=0;
         while(i<vege_PotList.Count && count<vegeCount ){
             if(vege_PotList[i].CompareTag("Vegetable")){
+                Destroy(vege_PotList[i]);
                 vege_PotList.RemoveAt(i);
+                
                 count++;
             }
         }
@@ -73,6 +75,7 @@ public class MainMenuPot : CookingPot,ISubPots
         int i=0,count=0;
         while(i<meat_PotList.Count && count<meatCount ){
             if(meat_PotList[i].CompareTag("Meat")){
+                Destroy(meat_PotList[i]);
                 meat_PotList.RemoveAt(i);
                 count++;
             }
@@ -83,6 +86,7 @@ public class MainMenuPot : CookingPot,ISubPots
         int i=0,count=0;
         while(i<dough_PotList.Count && count<doughCount ){
             if(dough_PotList[i].CompareTag("Dough")){
+                Destroy(dough_PotList[i]);
                 dough_PotList.RemoveAt(i);
                 count++;
             }
